@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block title %}个人信息{% endblock %}
+{% block body %}
+
+
+        <div class="col-md-6">
+            <h2>个人信息</h2>
+            <div class="row">
+                <div class="col-md-3 text-right">
+                    <span>姓名：</span>
+                </div>
+                <div class="col-md-9 text-left">
+                    {{ user_profile.user.username }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 text-right">
+                    <span>年龄：</span>
+                </div>
+                <div class="col-md-9 text-left">
+                    {{ user_profile.age }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 text-right">
+                    <span>性别：</span>
+                </div>
+                <div class="col-md-9 text-left">
+                    {{ user_profile.gender }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 text-right">
+                    <span>班级：</span>
+                </div>
+                <div class="col-md-9 text-left">
+                    {{ user_profile.class_name }}
+                </div>
+            </div>
+        </div>
+
+
+    <!-- 打卡记录展示区域 -->
+    <div class="col-md-9">
+        <h2>我的打卡记录</h2>
+        <div class="col-md-8 offset-md-2">
+            {% for log in exercise_logs %}
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <p class="card-text">提交时间：{{ log.timestamp }}</p>
+                        <p class="card-text">打卡地点：{{ log.location }}</p>
+                        <p class="card-text">运动项目：{{ log.exercise_type }}</p>
+                        <p class="card-text">运动时长：{{ log.exercise_duration }}分钟</p>
+                        <p class="card-text">运动日期：{{ log.date }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

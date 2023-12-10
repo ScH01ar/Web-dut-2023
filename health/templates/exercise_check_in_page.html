@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block title %}运动打卡{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <form method="post" action="{% url 'exercise_check_in' %}" class="mx-auto mt-4">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label for="location" class="form-label">打卡地点:</label>
+            <input type="text" name="location" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="exercise_type" class="form-label">打卡项目:</label>
+            <input type="text" name="exercise_type" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="exercise_duration" class="form-label">运动时间:</label>
+            <input type="number" name="exercise_duration" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="date" class="form-label">选择打卡日期:</label>
+            <input type="date" name="date" class="form-control" required>
+        </div>
+
+        <div class="d-grid">
+            <button type="submit" class="btn btn-primary">提交打卡</button>
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}
